@@ -18,7 +18,6 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 public class EntrustRequestEntity extends BasePo {
-    private String id;
     private String name;
     private String time;
     private String type;

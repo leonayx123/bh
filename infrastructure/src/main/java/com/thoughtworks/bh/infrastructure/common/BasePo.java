@@ -5,13 +5,15 @@ import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 
-@GenericGenerator(name = "jpa-uuid", strategy = "uuid")
 @Getter
 @Setter
+@MappedSuperclass
 public abstract class BasePo {
     @Id
-    @GeneratedValue(generator = "jpa-uuid")
-    private String id;
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private Long id;
 }

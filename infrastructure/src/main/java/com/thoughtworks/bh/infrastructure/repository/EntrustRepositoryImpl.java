@@ -7,8 +7,8 @@ import com.thoughtworks.bh.domain.entrust.repository.EntrustRepository;
 import com.thoughtworks.bh.infrastructure.entity.EntrustEntity;
 import com.thoughtworks.bh.infrastructure.entity.EntrustRequestEntity;
 import com.thoughtworks.bh.infrastructure.mapper.InfraEntrustMapper;
-import com.thoughtworks.bh.infrastructure.repo.EntrustRepo;
-import com.thoughtworks.bh.infrastructure.repo.EntrustRequestRepo;
+import com.thoughtworks.bh.infrastructure.jpaclient.EntrustRepo;
+import com.thoughtworks.bh.infrastructure.jpaclient.EntrustRequestRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
