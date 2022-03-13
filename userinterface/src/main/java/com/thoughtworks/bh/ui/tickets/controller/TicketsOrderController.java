@@ -1,6 +1,7 @@
 package com.thoughtworks.bh.ui.tickets.controller;
 
 import com.thoughtworks.bh.application.order.service.OrderService;
+import com.thoughtworks.bh.domain.common.BaseException;
 import com.thoughtworks.bh.domain.tickets.model.OrderEntity;
 import com.thoughtworks.bh.ui.common.CommonResponse;
 import com.thoughtworks.bh.ui.tickets.mapper.OrderMapper;
@@ -24,7 +25,11 @@ public class TicketsOrderController {
 
         OrderEntity orderEntity = OrderMapper.MAPPER.requestToDomain(createOrderRequest);
         orderEntity.withProposalId(proposalId);
-        orderService.createOrder(orderEntity);
+
+        boolean result = orderService.createOrder(orderEntity);
+        if (result) {
+            throw new BaseException(500, "预留失败,余票不足");
+        }
 
         // 异常处理已经在全局的 ExceptionHandle 处理.无需每个controller单独实现.这里和工序写的不一样
         // 工序主要为打样. 实际开发会使用全局异常处理.

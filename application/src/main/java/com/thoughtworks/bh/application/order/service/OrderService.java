@@ -16,7 +16,8 @@ public class OrderService {
         boolean reservedSuccess = ticketsInventoryClient.reserved(order);
         if (reservedSuccess) {
             orderRepository.save(order);
+            return true;
         }
-        return true;
+        return false;
     }
 }

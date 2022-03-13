@@ -36,6 +36,19 @@ class OrderServiceTest extends Specification {
         result == true
     }
 
+
+    def "should return false when TicketsInventoryClient reserved false"() {
+        given:
+        ticketsInventoryClient.reserved(_ as OrderEntity) >> false
+
+        OrderEntity order = buildOrderForTest()
+        when:
+        def result = orderService.createOrder(order)
+
+        then:
+        result == false
+    }
+
     static OrderEntity buildOrderForTest() {
         String json = "{\n" +
                 "            \"flightNo\": \"MU2111\",\n" +
